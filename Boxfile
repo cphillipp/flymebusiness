@@ -3,6 +3,6 @@ web1: #component type & number
   shared_writable_dirs:
     - wp-content/uploads
 	php_extensions:
-	    - mysql
-	    - apc
-	    - gd
+	  - mysql
+	  - apc
+	  - gd
