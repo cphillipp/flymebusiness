@@ -1,8 +1,13 @@
-web1: #component type & number
-  name: wp #component settings
+web1: 
+  name: wp-web 
   shared_writable_dirs:
-    - wp-content/uploads
-	php_extensions:
-	  - mysql
-	  - apc
-	  - gd
+    - wp-content/uploads/
+  after_build:
+    - "mv pagoda/wp-config.php wp-config.php"
+    - "rm -R pagoda"
+  php_extensions:
+    - mysql
+    - apc
+    - gd    
+db1:
+  name: wp-db
