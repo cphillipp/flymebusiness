@@ -45,7 +45,7 @@ if($filterable){
 		if(is_array($selectedPortfolioCatetegories)){ 
 			foreach ($selectedPortfolioCatetegories as $arrayorder => $termID) { 
 				$sortCategories = get_term_by('id', $termID, 'portfolio_categories');
-				$sortNavigation  .= '<li><a data-filter=".'.$sortCategories->slug.'">'.$sortCategories->name.'</a></li>';
+				$sortNavigation  .= '<li><a data-filter="'.$sortCategories->slug.'">'.$sortCategories->name.'</a></li>';
 			}
 		}  
 
@@ -91,21 +91,21 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 	 
 
 	// other values
-	$image				=	(is_array($rt_gallery_images)) ? find_image_org_path($rt_gallery_images[0]) : "";
+	$image					=	(is_array($rt_gallery_images)) ? find_image_org_path($rt_gallery_images[0]) : "";
 	$title           		=	get_the_title();
 	$video          		=	str_replace("&","&amp;",get_post_meta($post->ID, 'rttheme_portfolio_video', true));
 	$video_thumbnail 		=	find_image_org_path(get_post_meta($post->ID, 'rttheme_portfolio_video_thumbnail', true)); 
-	$desc				=	get_post_meta($post->ID, 'rttheme_portfolio_desc', true);
-	$permalink			=	get_permalink();
+	$desc					=	get_post_meta($post->ID, 'rttheme_portfolio_desc', true);
+	$permalink				=	get_permalink();
 	$remove_link			= 	get_post_meta($post->ID, 'rttheme_portf_no_detail', true);
 	$custom_thumb			= 	get_post_meta($post->ID, 'rttheme_portfolio_thumb_image', true);
 	$disable_lightbox		= 	get_post_meta($post->ID, 'rttheme_disable_lightbox', true);	
-	$term_list 			=	get_the_terms($post->ID, 'portfolio_categories'); //  selected term list of each post
+	$term_list 				=	get_the_terms($post->ID, 'portfolio_categories'); //  selected term list of each post
 	$portfolio_format		= 	get_post_meta($post->ID, 'rttheme_portfolio_post_format', true);
 	$external_link			= 	get_post_meta($post->ID, 'rttheme_external_link', true);
 	$open_in_new_tab		= 	get_post_meta($post->ID, 'rttheme_open_in_new_tab', true);
 	$media_link 			=    "";
-	$target	 			=    "";
+	$target	 				=    "";
 
 	//box counter
 	if(!isset($box_counter)) $box_counter = 1;
@@ -449,8 +449,7 @@ $post_count=$page_count['post_count'];
 
 <?php endwhile;?> 
 
-<?php echo "</div>"?>
-
+ 
 
 <?php if($page_count['page_count']>1 && $paged):?> 
  
@@ -466,4 +465,4 @@ $post_count=$page_count['post_count'];
 <?php endif;?>
 
 
-<?php endif; wp_reset_query(); ?>
+<?php endif; wp_reset_query(); ?></div>

@@ -42,3 +42,48 @@ ul.social_media_icons li {
 .social_tip{
 	float:right;
 }
+
+/* Navigation */
+html[dir="rtl"] #navigation ul {
+    text-align: right;
+}
+
+html[dir="rtl"] #navigation ul ul{
+    right:151px;
+    left: auto;
+}
+
+
+.rt-toggle ol li .toggle-head, .rt-toggle ol li.open .toggle-head{ 
+    background-position: left;
+}
+
+.rt-toggle ol li .toggle-number{  
+    right:0; 
+    left: auto;
+} 
+
+
+
+.content .contact_list .phone,
+.content .contact_list .home,
+.content .contact_list .mail,
+.content .contact_list .help,
+.content .contact_list .map,
+.content .contact_list .fax,
+.content .contact_list .contact_form_icon{
+     background-position: right 3px;
+     padding-right:35px !important;
+}
+
+
+.woocommerce_ordering{
+    left:0;
+    right: auto;
+}
+
+
+.widget_shopping_cart .title h3 {
+    background-position: right 1px;
+    padding-right: 25px;
+}

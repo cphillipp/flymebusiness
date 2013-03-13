@@ -89,7 +89,8 @@ function wpml_t($context, $name, $original_value){
 #	String Registration
 #
 wpml_register_string( THEMESLUG , 'Footer Copyright Text', stripslashes(get_option(THEMESLUG.'_footer_copy')));
-wpml_register_string( THEMESLUG , 'Breadcrumb Menu Text',  get_option(THEMESLUG.'_breadcrumb_text'));
+wpml_register_string( THEMESLUG , 'Breadcrumb Menu Text',  get_option(THEMESLUG.'_breadcrumb_text')); 
+wpml_register_string( THEMESLUG , 'Free code space for advanced users ', stripslashes(get_option(THEMESLUG.'_header_text')));
 
 
 ?>

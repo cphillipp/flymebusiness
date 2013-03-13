@@ -21,7 +21,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 			<!-- blog headline-->
 			<h5><a href="<?php echo get_permalink() ?>" title="<?php the_title(); ?>"> 
 				<?php
-					$the_title = str_ireplace(trim(get_search_query()), '<span class="yellow nopadding">'.get_search_query().'</span>', get_the_title()); 
+					$the_title = search_highlight(trim(get_search_query()), get_the_title());
 					echo $the_title;
 				?> 
 			</a></h5>
@@ -31,7 +31,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 				<!-- blog text-->
 					<?php
 					$the_excerpt = apply_filters('the_content',(get_the_excerpt())); 	 
-					$the_excerpt = str_ireplace(trim(get_search_query()), '<span class="yellow nopadding">'.get_search_query().'</span>', $the_excerpt); 
+					$the_excerpt = search_highlight(trim(get_search_query()), $the_excerpt);
 					echo $the_excerpt;
 					?> 
 				<!-- /blog text-->

@@ -43,7 +43,7 @@ $woocommerce_loop['loop']++;
 
 		<div class="product_info">		
 		<h5>
-			<a href="<?php echo get_term_link( $category->slug, 'product_cat' ); ?>"><?php the_title(); ?>
+			<a href="<?php echo get_term_link( $category->slug, 'product_cat' ); ?>">
 			<?php echo $category->name; ?> 
 			<?php if ( $category->count > 0 ) : ?>
 				<mark class="count">(<?php echo $category->count; ?>)</mark>

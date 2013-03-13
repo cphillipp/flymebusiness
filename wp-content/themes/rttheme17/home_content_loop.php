@@ -29,12 +29,13 @@ global $home_page,$which_theme,$row,$layout_values,$layout,$firstBox,$lastBox,$r
 		#	Values 
 		#
 		
-		$box_title			=	get_the_title();
+		$box_title				=	get_the_title();
 		$box_sub_title			=	get_post_meta($keep->post->ID, THEMESLUG.'sub_title', true);
 		$custom_link 			= 	get_post_meta($keep->post->ID, THEMESLUG.'custom_link', true);
 		$custom_link_text 		= 	get_post_meta($keep->post->ID, THEMESLUG.'custom_link_text', true);
-		$image 				=	get_post_thumbnail_id();
-		$crop				=	get_post_meta($keep->post->ID, THEMESLUG.'homepage_image_crop', true);
+		$custom_link_target 	=   get_post_meta($keep->post->ID, THEMESLUG.'custom_link_target', true) ? get_post_meta($keep->post->ID, THEMESLUG.'custom_link_target', true) : "_self";		
+		$image 					=	get_post_thumbnail_id();
+		$crop					=	get_post_meta($keep->post->ID, THEMESLUG.'homepage_image_crop', true);
 		$custom_image_height	=	get_post_meta($keep->post->ID, THEMESLUG.'homepage_image_height', true);
 		$featured_image_position	=	@get_post_meta($keep->post->ID, THEMESLUG.'featured_image_position', true);
 		$heading_and_text_position	= @get_post_meta($keep->post->ID, THEMESLUG.'heading_and_text_position', true);
@@ -95,7 +96,7 @@ global $home_page,$which_theme,$row,$layout_values,$layout,$firstBox,$lastBox,$r
 				?>				
 
 				<?php if($image && ($featured_image_position=="before-center" || $featured_image_position=="before-left" || $featured_image_position=="before-right") ):?>
-					<?php if ($custom_link) echo  "<a href=\"". $custom_link ."\" title=\"". $box_title ."\" >"; ?>
+					<?php if ($custom_link) echo  "<a href=\"". $custom_link ."\" target=\"".$custom_link_target."\" title=\"". $box_title ."\" >"; ?>
 						<!-- featured image -->
 						<img src="<?php echo @$image_thumb["url"];?>" class="featured <?php echo $thePositionClass;?>" alt="<?php echo $box_title;?>" />
 						<?php if($thePositionClass=="aligncenter" || $thePositionClass==""):?><div class="space margin-b10"></div><?php endif;?>
@@ -105,7 +106,7 @@ global $home_page,$which_theme,$row,$layout_values,$layout,$firstBox,$lastBox,$r
 
 				<?php if($box_title && !$hide_the_heading):?> 
 				<!-- box title-->
-				<h3 <?php if ($heading_and_text_position=="center") echo 'class="aligncenter"'; ?>><?php if($custom_link):?><a href="<?php echo $custom_link;?>" title="<?php echo $box_title;?>"><?php endif;?><?php echo $box_title;?><?php if($custom_link):?></a><?php endif;?></h3>
+				<h3 <?php if ($heading_and_text_position=="center") echo 'class="aligncenter"'; ?>><?php if($custom_link):?><a href="<?php echo $custom_link;?>" target="<?php echo $custom_link_target;?>" title="<?php echo $box_title;?>"><?php endif;?><?php echo $box_title;?><?php if($custom_link):?></a><?php endif;?></h3>
 				<?php endif;?> 
 				
 				<?php if($box_title || $box_sub_title):?>
@@ -113,7 +114,7 @@ global $home_page,$which_theme,$row,$layout_values,$layout,$firstBox,$lastBox,$r
 				<?php endif;?>
 
 				<?php if($image && ($featured_image_position=="after-center" || $featured_image_position=="after-left" || $featured_image_position=="after-right" || $featured_image_position=="") ):?>
-					<?php if ($custom_link) echo  "<a href=\"". $custom_link ."\" title=\"". $box_title ."\" >"; ?>
+					<?php if ($custom_link) echo  "<a href=\"". $custom_link ."\" target=\"".$custom_link_target."\" title=\"". $box_title ."\" >"; ?>
 						<!-- featured image -->
 						<img src="<?php echo @$image_thumb["url"];?>" class="featured <?php echo $thePositionClass;?>" alt="<?php echo $box_title;?>" />
 						<?php if($thePositionClass=="aligncenter" || $thePositionClass==""):?><div class="space margin-b10"></div><?php endif;?>
@@ -123,7 +124,7 @@ global $home_page,$which_theme,$row,$layout_values,$layout,$firstBox,$lastBox,$r
 
 				<?php
 				if ($custom_link && $custom_link_text):
-					$read_more =  "<a href=\"". $custom_link ."\" title=\"". $box_title ."\" class=\"read_more\">". $custom_link_text ." →</a>";
+					$read_more =  "<a href=\"". $custom_link ."\" target=\"".$custom_link_target."\" title=\"". $box_title ."\" class=\"read_more\">". $custom_link_text ." →</a>";
 				else:
 					$read_more ="";
 				endif;

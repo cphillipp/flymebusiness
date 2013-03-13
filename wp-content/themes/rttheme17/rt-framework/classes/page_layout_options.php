@@ -265,7 +265,13 @@ class RTThemePageLayoutOptions extends RTThemeAdmin{
 				$templates->templates[$template]->contents[$box]->code_space            =  $value["code_space"];
 				$templates->templates[$template]->contents[$box]->transparent       = isset($value["transparent"]) ? $value["transparent"] : "";
 				$templates->templates[$template]->contents[$box]->no_padding       =  isset($value["no_padding"]) ? $value["no_padding"] : ""; 
+
+					
+					//wpml register string
+					wpml_register_string( THEMESLUG , 'Title for Code Box '.$templates->templates[$template]->templateID.$group_id, $value["heading"] ); 
+					wpml_register_string( THEMESLUG , 'Description for Code Box '.$templates->templates[$template]->templateID.$group_id, $value["code_space"] ); 							
 				}
+
 
 				//line up boxes 	templateid_50758_line_up_boxes
 				if(stristr($key, $templates->templates[$template]->templateID.'_line_up_boxes') == TRUE && $templates->templates[$template]->templateName) {
@@ -812,7 +818,7 @@ class RTThemePageLayoutOptions extends RTThemeAdmin{
 
 
 					array(
-							"desc" 		=> __("FOLLOWING OPTIONS ONLY FOR THE FLEX SLIDER",'rt_theme_admin'),	  
+							"desc" 		=> __("FOLLOWING OPTIONS ARE ONLY FOR THE FLEX SLIDER",'rt_theme_admin'),	  
 							"type" 		=> "info_text_only"),
 
 					array(

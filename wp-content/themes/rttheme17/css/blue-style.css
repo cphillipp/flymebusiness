@@ -38,7 +38,7 @@ a.read_more:hover,a.more-link:hover
 .head_text .arrow,
 .box:hover > .image-border-bottom,
 #navigation ul,
-#navigation_bar > ul > li.current_page_item > a, #navigation_bar > ul > li.current-menu-ancestor > a , #navigation_bar > ul > li > a:hover, #navigation_bar > ul > li:hover > a,
+#navigation_bar > ul > li.current_page_item > a, #navigation_bar > ul > li.current_page_parent > a, #navigation_bar > ul > li.current-menu-ancestor > a , #navigation_bar > ul > li > a:hover, #navigation_bar > ul > li:hover > a,
 .flex-caption .desc-background,
 .flex-direction-nav li, .flex-direction-nav li a,
 .flex-control-nav li a,

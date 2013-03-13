@@ -84,7 +84,7 @@ $date_format = get_option('rttheme_date_format');
 			
 			<div class="blog-head-line <?php if($post_format=="link") echo "link";?> clearfix">	
 
-
+				<?php if(!$hide_dates):?>
 				<!-- post date -->
 				<div class="date">
 					<span class="day"><?php the_time("d") ?></span>
@@ -93,6 +93,7 @@ $date_format = get_option('rttheme_date_format');
 
 				<div class="mobile-date"><?php the_time(get_option('rttheme_date_format')) ?></div>
 				<!-- / end div .date --> 
+				<?php endif;?>
 		 				
 		 		<div class="post-title-holder">
 					<!-- blog headline-->

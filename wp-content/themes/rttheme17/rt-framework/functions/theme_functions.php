@@ -459,7 +459,7 @@ function HexToRGB($hex) {
 	return $color;
 }
 
-
+//Browser Info
 function browser_info($agent=null) {
   // Declare known browsers to look for
   $known = array('msie', 'firefox', 'safari', 'webkit', 'opera', 'netscape',
@@ -480,5 +480,17 @@ function browser_info($agent=null) {
   // in the UA).  That's usually the most correct.
   $i = count($matches['browser'])-1;
   return array($matches['browser'][$i] => $matches['version'][$i]);
+}
+
+
+//Search Highlight
+function search_highlight($needle, $haystack) {
+	$ind = stripos($haystack, $needle);
+	$len = strlen($needle);
+		if($ind !== false) {
+		return substr($haystack, 0, $ind) . '<span class="yellow nopadding">' . substr($haystack, $ind, $len) . "</span>" . search_highlight($needle, substr($haystack, $ind + $len));
+	} else {
+		return $haystack;
+	}
 }
 ?>

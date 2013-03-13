@@ -286,9 +286,8 @@
 	/* fix for IE */	
 	.on-top{
 		z-index: 10000;
-	}	
- 
-	
+	}	 
+
 	/*
 	*
 	* 	menu links styling
@@ -307,7 +306,7 @@
 	}
 
 	/* current page item and hover status */
-	#navigation_bar > ul > li.current_page_item > a, #navigation_bar > ul > li.current-menu-ancestor > a , #navigation_bar > ul > li > a:hover, #navigation_bar > ul > li:hover > a{
+	#navigation_bar > ul > li.current_page_item > a, #navigation_bar > ul > li.current_page_parent > a, #navigation_bar > ul > li.current-menu-ancestor > a , #navigation_bar > ul > li > a:hover, #navigation_bar > ul > li:hover > a{
 		background:#4B9EC9 url(../images/menu-top.png) center top no-repeat;
 		color:#fff;
 	}
@@ -907,6 +906,7 @@
 		color:#929292 !important;
 		background:url(../images/transparent-white.png);
 		border-radius:0;
+		text-align: left;
 	}
 	
 	body .search-bar form input.searchsubmit{
@@ -1061,15 +1061,6 @@
 	.product .button.small.alignright.default{
 		margin:0 0 10px;
 	}
-	
-	.doc_icons{
-		list-style:none;
-	}
-
-	.doc_icons li{
-		float:left;
-		padding:0 10px 0 0;
-	}
 
 	/* product thumbnails on single product page */   
 	#product_thumbnails li { 
@@ -1081,6 +1072,38 @@
 		display:inline;
 	}
 
+	/* attached documents */
+
+	.doc_icons ul{
+		list-style:none;
+		position: relative;
+	}
+
+	.doc_icons ul li{
+		background: none repeat scroll 0 0 #FFFFFF;
+		border: 1px solid #EEEEEE;
+		float: left;
+		margin-bottom: 10px;
+		margin-right: 10px;
+		max-height: 100px;
+		max-width: 200px;
+		min-height: 100px;
+		min-width: 100px;
+		overflow: hidden;
+		padding: 20px;
+		text-align: center;
+	}
+
+	.doc_icons ul li:hover{	
+		overflow: visible;
+	    position: relative; 
+	    max-height: none;
+	    border: 1px solid #ddd;
+	}
+
+	.doc_icons strong {
+	    display: block;
+	}	
 
 /* ----------------------------------------------------
 	10) PAGING
@@ -1483,11 +1506,6 @@
 		float:left;
 		margin:0 0 0 5px;
 	} 
-
-	#footer ul.social_media_icons img {
-	    height: 24px;
-	    width: 24px;
-	}
 
 	.social_media_icons a{
 		float: left;
@@ -2611,6 +2629,7 @@
 		position: absolute;
 		top: 8px;
 		left:0;
+		text-align: left;
 	} 
 
 	.rt-toggle ol li .toggle-title{ 

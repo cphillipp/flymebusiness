@@ -129,7 +129,7 @@ $post_count=$page_count['post_count'];
 ?>
 
 <?php endwhile;?>
-</div>
+
 
 <?php if($page_count['page_count']>1 && $paged):?> 
  
@@ -149,5 +149,5 @@ $post_count=$page_count['post_count'];
     
 <?php endif;?>
 
-<?php endif; wp_reset_query(); ?>
+<?php endif; wp_reset_query(); ?></div>
 	 

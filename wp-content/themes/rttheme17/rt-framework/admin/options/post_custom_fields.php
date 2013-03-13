@@ -201,8 +201,8 @@ $customFields = array(
 		"description"		=> __("You can upload unlimited images for each portfolio item by using <strong>\"".THEMENAME." Featured Images\"</strong> and decide how show to display them in single portfolio pages.",'rt_theme_admin'),
 		"name"			=> "_featured_image_usage",
 		"options" 		=>  array(
-							"slider" 		=> "Display the featued images as a slide show", 
-							"gallery" 	=> "Display the featuted images as a photo gallery"
+							"slider" 		=> "Display the featured images as a slide show", 
+							"gallery" 	=> "Display the featured images as a photo gallery"
 						 ),
 		"type" 			=> "select",				
 		"hr"				=> "true"

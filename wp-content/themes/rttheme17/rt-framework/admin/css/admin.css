@@ -235,9 +235,9 @@ table{
 
 
 .right-col .deleteButton{ 
-	padding:6px 6px 6px 24px;
+	padding:4px 6px 6px 24px;
 	margin:0 0 0 5px;
-	background:#fff url(../images/delete.png) 6px 5px no-repeat; 
+	background:#fff url(../images/delete.png) 5px 3px no-repeat; 
 	color:#A2A2A2;
 	cursor:pointer;
 } 
@@ -248,9 +248,9 @@ table{
 }
 
 .right-col .closeButton{ 
-	padding:6px 6px 6px 24px;
+	padding:4px 6px 6px 24px;
 	margin:0 0 0 5px;
-	background:#fff url(../images/bullet_arrow_up.png) 6px 7px no-repeat; 
+	background:#fff url(../images/bullet_arrow_up.png) 6px 4px no-repeat; 
 	color:#A2A2A2;
 	cursor:pointer;
 	width: 80px;
@@ -261,11 +261,11 @@ table{
 }
  
 .right-col .deleteButton:hover {    
-	background:#fff url(../images/delete.png) 6px 5px no-repeat; 
+	background:#fff url(../images/delete.png) 5px 3px no-repeat; 
 }
 
 .right-col .closeButton:hover {    
-	background:#fff url(../images/bullet_arrow_up.png) 6px 7px no-repeat; 
+	background:#fff url(../images/bullet_arrow_up.png) 6px 4px no-repeat; 
 }
 
 .right-col .save {
@@ -288,13 +288,18 @@ table{
 
 .right-col .create_button { 
 	background:#F2F2F2 url(../images/page_add.png) no-repeat 10px 4px;
-	padding: 5px 10px 5px 30px;
+	padding: 4px 10px 5px 34px;
 	color:#5A5A5A;
 }
 
+.right-col .create_button:hover { 
+	background:#F2F2F2 url(../images/page_add.png) no-repeat 10px 4px; 
+}
+
+
 .right-col .add_button { 
 	background:#F2F2F2 url(../images/add.png) no-repeat 3px 4px;
-	padding: 5px 5px 5px 20px;
+	padding: 5px 10px 5px 25px;
 	color:#5A5A5A;
 }
 

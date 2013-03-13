@@ -43,8 +43,8 @@ $customFields = array(
 	
 	array(
 		"name"			=> "attached_documents",
-		"title"			=> __("Attached File Urls", 'rt_theme_admin'),
-		"description"		=> __("You can attach unlimited file to this product. Please put all the file urls line by line.",'rt_theme_admin'),		
+		"title"			=> __("Attached Files", 'rt_theme_admin'),
+		"description"		=> __("You can attach unlimited file to this product. Put all the file urls line by line. Use \"|\ delimiter to add file names. Example: <pre style=\"font-style:normal;\">File Name | http://file_url<br />File Name | http://file_url</pre>",'rt_theme_admin'),		
 		"type"			=> "textarea" 
 	),
  

@@ -672,7 +672,7 @@
 						}
 								echo ($template->heading) ? '<h3>'.wpml_t( THEMESLUG , 'Title for Code Box '.$selectedTemplate->templateID.$group_id, stripslashes($template->heading) ).'</h3><div class="space margin-b10"></div>' :"";
 								
-								echo ($template->code_space) ? apply_filters('the_content',stripslashes($template->code_space) ) : "";
+								echo ($template->code_space) ? wpml_t( THEMESLUG , 'Description for Code Box '.$selectedTemplate->templateID.$group_id, apply_filters('the_content',stripslashes($template->code_space) ) )  : "";
 						
 							 
 						echo	'</div>';

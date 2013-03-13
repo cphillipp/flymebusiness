@@ -68,6 +68,7 @@ sub_page_layout("subheader",$sidebar);
 	$featured_image_usage	= 	get_post_meta($post->ID, 'rttheme_featured_image_usage', true);	
 	$post_uniqueID			= 	'portfolio-post-'.get_the_ID().'';
 	$portfolio_format		= 	get_post_meta($post->ID, 'rttheme_portfolio_post_format', true);
+	$password_protected     	= ( post_password_required($post) ) ? true : false ;// Password Protected
 	
 	//project key details to add before sidebar
 	if(trim($project_info)){
@@ -130,7 +131,7 @@ sub_page_layout("subheader",$sidebar);
 		#
 		#	IMAGE POST FORMAT || EXTERNAL VIDEO
 		#
-		if($portfolio_format == "image" || $video): ?>
+		if( ( $portfolio_format == "image" || $video )  && !$password_protected): ?>
  
 
 				<?php
@@ -218,7 +219,7 @@ SCRIPT;
 		#
 		#	AUDIO POST FORMAT
 		#
-		if($portfolio_format == "audio"):
+		if( $portfolio_format == "audio"  && !$password_protected ):
 			$portfolio_audio_mp3	= 	get_post_meta($post->ID, THEMESLUG.'_portfolio_audio_mp3', true);
 			$portfolio_audio_oga	= 	get_post_meta($post->ID, THEMESLUG.'_portfolio_audio_oga', true);		
 		?>
@@ -303,7 +304,7 @@ SCRIPT;
 		#
 		#	VIDEO POST FORMAT
 		#
-		if($portfolio_format == "video" && !$video):
+		if( ( $portfolio_format == "video" && !$video )  && !$password_protected ):
 		
 			$portfolio_video_m4v	= 	get_post_meta($post->ID, THEMESLUG.'_portfolio_video_m4v', true);
 			$portfolio_video_ogv	= 	get_post_meta($post->ID, THEMESLUG.'_portfolio_video_ogv', true);		

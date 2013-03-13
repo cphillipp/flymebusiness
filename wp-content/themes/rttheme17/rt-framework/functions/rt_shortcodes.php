@@ -113,7 +113,7 @@ add_shortcode('tooltip', 'rt_tooltip');
 */ 
 function rt_scroll_slider( $atts, $content = null ) {
 	//[scroll_slider]
-	$rt_scroll_slider='<div class="scrollable_border box-shadow"><div id="image_wrap" class="aligncenter"><img src="images/pixel.gif" class="aligncenter" /></div><div class="clear"></div><a class="prev browse _left"></a><div class="scrollable"><div class="items big_image">';
+	$rt_scroll_slider='<div class="scrollable_border box-shadow"><div id="image_wrap" class="aligncenter"><img src="'.THEMEURI.'/images/pixel.gif" class="aligncenter" /></div><div class="clear"></div><a class="prev browse _left"></a><div class="scrollable"><div class="items big_image">';
 	$rt_scroll_slider .= do_shortcode(strip_tags($content));
 	$rt_scroll_slider.='</div></div><a class="next browse _right"></a></div><div class="clear"></div>';
 	return $rt_scroll_slider;
@@ -583,20 +583,30 @@ add_shortcode('pane', 'rt_shortcode_accordion_panel');
 function rt_social_media( $atts, $content = null ) {
  
 	global $social_media_icons;
-	$social_media_output ='';								
+	$social_media_output ='';			
+	$target = "";					
 	foreach ($social_media_icons as $key => $value){
 		
 		if($value=="email_icon"){//e-mail icon link 
-			$link = 'mailto:'.str_replace("mailto:", "", get_option( THEMESLUG.'_'.$value ));
+			
+			if(strpos(get_option( THEMESLUG.'_'.$value ), "@")){
+				$link = 'mailto:'.str_replace("mailto:", "", get_option( THEMESLUG.'_'.$value ));
+			}else{
+				$link = str_replace("mailto:", "", get_option( THEMESLUG.'_'.$value ));				
+			} 
+
+			$target = "_self";	
+
 		}else{
 			$link = get_option( THEMESLUG.'_'.$value );
+			$target = "_blank";	
 		}
 		
 		//all icons
 		if(get_option( THEMESLUG.'_'.$value )){
 			$social_media_output .= '<li>';
-			$social_media_output .= '<a target="_blank" href="'. $link .'" title="'.str_replace(" ", "&nbsp;", $key).'">';
-			$social_media_output .= '<img src="'.THEMEURI.'/images/assets/social_media/icon-'.$value.'.png" alt="" />';
+			$social_media_output .= '<a target="" href="'. $link .'" title="'.str_replace(" ", "&nbsp;", $key).'">';
+			$social_media_output .= '<img src="'.THEMEURI.'/images/assets/social_media/icon-'.$value.'.png" width="24" height="24" alt="" />';
 			$social_media_output .= '</a>';
 			$social_media_output .= '</li>';
 		}

@@ -55,33 +55,37 @@ sub_page_layout("subheader",$sidebar);
 	<?php
 	if (have_posts()) : while (have_posts()) : the_post();
 
+
+ 
+
 		// featured images
 		$rt_gallery_images 			= get_post_meta( $post->ID, THEMESLUG . "rt_gallery_images", true );
 		$rt_gallery_image_titles 	= get_post_meta( $post->ID, THEMESLUG . "rt_gallery_image_titles", true );
-		$rt_gallery_image_descs 		= get_post_meta( $post->ID, THEMESLUG . "rt_gallery_image_descs", true );
+		$rt_gallery_image_descs 	= get_post_meta( $post->ID, THEMESLUG . "rt_gallery_image_descs", true );
 	
 		//values 
-		$rt_attached_documents  		= get_post_meta($post->ID, THEMESLUG.'attached_documents', true); 
+		$rt_attached_documents  	= get_post_meta($post->ID, THEMESLUG.'attached_documents', true); 
 		$content					= apply_filters('the_content',(get_the_content())); 
-		$title					= get_the_title();
-		$permalink	 			= get_permalink();
+		$title						= get_the_title();
+		$permalink	 				= get_permalink();
 		$order_button				= get_post_meta($post->ID, THEMESLUG.'order_button', true);
 		$order_button_text			= get_post_meta($post->ID, THEMESLUG.'order_button_text', true);
 		$order_button_link			= get_post_meta($post->ID, THEMESLUG.'order_button_link', true);
 		$related_products			= get_post_meta($post->ID, THEMESLUG.'related_products[]', true);
-		$short_desc				= get_post_meta($post->ID, THEMESLUG.'short_description', true);
+		$short_desc					= get_post_meta($post->ID, THEMESLUG.'short_description', true);
+		$password_protected     	= ( post_password_required($post) ) ? true : false ;// Password Protected
 	
 
 		//next and previous links
 		if(get_option(THEMESLUG.'_hide_product_navigation')){
-			$prev = mod_get_adjacent_post(true,true,'', $taxonomy,'date');
-			$next = mod_get_adjacent_post(true,false,'', $taxonomy,'date');
+			$prev 					= mod_get_adjacent_post(true,true,'', $taxonomy,'date');
+			$next 					= mod_get_adjacent_post(true,false,'', $taxonomy,'date');
 			$prev_post_link_url 	= ($prev) ? get_permalink( $prev->ID ) : "";
 			$next_post_link_url 	= ($next) ? get_permalink( $next->ID ) : "";
-			$next_post_link	 	= ($next_post_link_url) ? '<a href="'.$next_post_link_url.'" title="" class="p_next"><span>'.__( 'Next →', 'rt_theme').'</span></a>' : false ;
-			$prev_post_link	 	= ($prev_post_link_url) ? '<a href="'.$prev_post_link_url.'" title="" class="p_prev"><span>'.__( '← Previous', 'rt_theme').'</span></a>': false ;				 
-			$add_class			= ($prev_post_link==false) ? "single" : ""; // if previous link is empty add class to fix white border
-			$before_sidebar		= ($next_post_link || $prev_post_link) ? '<div class="post-navigations  margin-b20 '.$add_class.'">'.$prev_post_link. '' .$next_post_link.'</div>' : "";
+			$next_post_link	 		= ($next_post_link_url) ? '<a href="'.$next_post_link_url.'" title="" class="p_next"><span>'.__( 'Next →', 'rt_theme').'</span></a>' : false ;
+			$prev_post_link	 		= ($prev_post_link_url) ? '<a href="'.$prev_post_link_url.'" title="" class="p_prev"><span>'.__( '← Previous', 'rt_theme').'</span></a>': false ;				 
+			$add_class				= ($prev_post_link==false) ? "single" : ""; // if previous link is empty add class to fix white border
+			$before_sidebar			= ($next_post_link || $prev_post_link) ? '<div class="post-navigations  margin-b20 '.$add_class.'">'.$prev_post_link. '' .$next_post_link.'</div>' : "";
 		} 
 
 		//free tabs count
@@ -102,7 +106,7 @@ sub_page_layout("subheader",$sidebar);
 
 	<!-- product images --> 
  
-		<?php if (is_array($rt_gallery_images)):
+		<?php if (is_array($rt_gallery_images)  && !$password_protected ):
 				
 		//is crop active		
 		$crop = (get_option(THEMESLUG.'_single_product_image_crop')) ? true : false ;
@@ -156,7 +160,7 @@ sub_page_layout("subheader",$sidebar);
 				#	Free Tabs
 				#	
 				for($i=0; $i<$tab_count+1; $i++){ 
-					if (trim(get_post_meta($post->ID, THEMESLUG.'free_tab_'.$i.'_title', true))){
+					if ( trim( get_post_meta($post->ID, THEMESLUG.'free_tab_'.$i.'_title', true ) )  && !$password_protected ){
 						echo '<li><a href="#">'.get_post_meta($post->ID, THEMESLUG.'free_tab_'.$i.'_title', true).'</a></li>';
 					}
 				}
@@ -164,7 +168,7 @@ sub_page_layout("subheader",$sidebar);
 				#
 				#	Attached Documents
 				# 		
-				if($rt_attached_documents){
+				if( $rt_attached_documents  && !$password_protected ){
 					echo '<li><a href="#">'.__('Attached Documents','rt_theme').'</a></li>';
 				}
 				?>
@@ -197,9 +201,7 @@ sub_page_layout("subheader",$sidebar);
 		#	Free Tabs' Content
 		#	
 		for($i=0; $i<$tab_count+1; $i++){ 
-			if (trim(get_post_meta($post->ID, THEMESLUG.'free_tab_'.$i.'_title', true))){
-				  
-				 
+			if ( trim( get_post_meta($post->ID, THEMESLUG.'free_tab_'.$i.'_title', true) )  && !$password_protected ){ 
 				echo '<div class="pane">';
 				echo (apply_filters('the_content',get_post_meta($post->ID, THEMESLUG.'free_tab_'.$i.'_content', true)));
 				echo '<div class="clear"></div></div>';
@@ -207,15 +209,12 @@ sub_page_layout("subheader",$sidebar);
 		}
 		?>
 
-		<?php if($rt_attached_documents):?>
-		
-		
-
+		<?php if($rt_attached_documents && !$password_protected):?> 
 				
 			<?php if(@!$tabbed_page):?><div class="line"></div><?php endif;?>
 			<div class="pane">
 				<!-- document icons -->
-				<ul class="doc_icons">
+				<div class="doc_icons">
 					
 					<?php
 
@@ -225,8 +224,22 @@ sub_page_layout("subheader",$sidebar);
 					endif;
 					
 					if(is_array($rt_attached_documents)){
-						foreach($rt_attached_documents as $fileURL){ 
-							
+						
+						echo "<ul>";
+
+						foreach($rt_attached_documents as $a_file){ 
+
+							if(strpos($a_file,"|")) {
+								$a_file = explode("|", $a_file);
+								$fileURL = trim( $a_file[1] );
+								$fileName = trim( $a_file[0] );
+							}else{
+								$fileURL = trim( $a_file );
+								$fileName  = "";
+							}
+
+							echo "<li>";
+
 							if(strpos($fileURL, ".doc")){
 								echo '<a href="'.$fileURL.'" title="'.__('Download Word File','rt_theme').'"><img src="'.THEMEURI.'/images/assets/icons/Word.png" alt="'.__('Download Word File','rt_theme').'" class="png" /></a>';
 							}
@@ -247,11 +260,18 @@ sub_page_layout("subheader",$sidebar);
 								echo '<a href="'.$fileURL.'" title="'.__('Download File','rt_theme').'"><img src="'.THEMEURI.'/images/assets/icons/File.png" alt="'.__('Download File','rt_theme').'" class="png" /></a>';
 							}
 							
+							//file name
+							if( $fileName ) echo "<strong>" .$fileName ."</strong>";
+
+							echo "</li>";
+							
 						}
+
+						echo "</ul>";
 					}
 					?>
 
-				</ul>
+				</div>
 				<!-- document icons -->
 			</div>
 		<?php endif;?>

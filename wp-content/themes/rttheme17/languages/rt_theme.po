@@ -155,11 +155,7 @@ msgstr ""
 #. Text in function
 #: rt-framework/classes/loading.php:1
 #: comments.php:137
-msgid "Email"
-msgstr ""
-
 #. Text in echo
-
 msgid "Email"
 msgstr ""
 

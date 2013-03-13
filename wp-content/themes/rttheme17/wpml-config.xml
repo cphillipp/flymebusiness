@@ -25,7 +25,7 @@
 		<custom-field action="translate">rtthemecustom_link</custom-field>
 		<custom-field action="translate">rtthemecustom_link_text</custom-field>
 		<custom-field action="translate">rtthemesub_title</custom-field>
-		<custom-field action="copy">rtthemecustom_sidebar_position</custom-field>		
+		<custom-field action="translate">rtthemecustom_sidebar_position</custom-field>		
 		<custom-field action="copy">rtthemehomepage_image_crop</custom-field>		
 		<custom-field action="copy">rtthemehomepage_image_height</custom-field>		
 		<custom-field action="copy">rttheme_google_fonts_heading</custom-field>		

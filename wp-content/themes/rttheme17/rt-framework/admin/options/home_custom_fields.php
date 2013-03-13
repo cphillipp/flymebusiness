@@ -61,6 +61,17 @@ $customFields = array(
 			),
 
 			array(
+				"name" => "custom_link_target",
+				"title" => __("Custom Link Target",'rt_theme_admin'),
+				"options" =>  array(
+							"_self" => "Same Page",
+							"_blank" => "New Page", 
+							),
+				"hr" => true,
+				"type" => "select"
+			),
+
+			array(
 					"title" => __("FEATURED IMAGE",'rt_theme_admin'), 
 					"type" => "heading"
 				),

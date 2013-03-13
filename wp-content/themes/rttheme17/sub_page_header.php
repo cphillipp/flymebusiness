@@ -27,27 +27,32 @@ $header_text = "";
 
 if(!$disable_header_image){
 	
+	// Individual Posts (page, post, product, portfolio etc.) 
 	if(!is_archive() && !is_search() && !is_404() && !is_category() && isset($post->ID)){
-	// meta values for current post
-	$header_background_image = @get_post_meta( $post->ID, THEMESLUG . "_header_background_image", true );
-	$header_text = @get_post_meta( $post->ID, THEMESLUG . "_header_text", true );
-	
-	    // WooCommerce
-	    if ( class_exists( 'Woocommerce' ) ) {		 
-			$woo_page_id ="";
-			$woo_page_id = (is_product_category() || is_shop()) ? woocommerce_get_page_id('shop') : $woo_page_id;
+		// meta values for current post
+		$header_background_image = @get_post_meta( $post->ID, THEMESLUG . "_header_background_image", true );
+		$header_text = @get_post_meta( $post->ID, THEMESLUG . "_header_text", true );	
+	}
 
-			if($woo_page_id){
+    // WooCommerce - Shop base page of Woocommerce 
+    if ( class_exists( 'Woocommerce' ) && ( is_archive() || is_product() ) ) {		 
+		$woo_page_id ="";
+		$woo_page_id = ( is_woocommerce() ) ? woocommerce_get_page_id('shop') : $woo_page_id; 
+
+		// Use WooCommerce Shop Base page header background image for WooCommerce categories and tags also
+		// If current page is a WooCommerce Product page use the Shop Base header background image for the product if there is not just for this one
+		if( is_archive() || ( is_product() && !$header_background_image && !$header_text ) ) {
+			if( $woo_page_id ){
 				$header_background_image = @get_post_meta( $woo_page_id, THEMESLUG . "_header_background_image", true );
 				$header_text = @get_post_meta( $woo_page_id, THEMESLUG . "_header_text", true );
-			} 
-	    }
-	}
+			}
+		}  	
+    }
 
 	// if meta values are blank use default options 
 	if(!$header_background_image && !$header_text){
 		$header_background_image = @get_option( THEMESLUG . "_header_background_image");
-		$header_text = @get_option( THEMESLUG . "_header_text");
+		$header_text = wpml_t( THEMESLUG , 'Free code space for advanced users '.$selectedTemplate->templateID.$group_id, get_option( THEMESLUG . "_header_text") );
 	}
 }
 ?>
