@@ -757,7 +757,7 @@ img.ui-datepicker-trigger {
 }
 .gform_wrapper .top_label .gfield_description.validation_message,
 .gform_wrapper .gfield_description.validation_message {
-	padding: 10px 0 10px 0 !important
+	/*padding: 10px 0 10px 0 !important*/
 }
 .gform_wrapper .ginput_container + .gfield_description.validation_message {
 	margin-top: 6px
