@@ -448,10 +448,10 @@ html>body .entry ul,
 }
 .gform_wrapper li.gfield.gfield_error,
 .gform_wrapper li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning {
-	background-color: #FFDFDF;
+	/*background-color: #FFDFDF;
 	margin-bottom: 6px !important;
 	padding: 6px 6px 4px 6px !important;
-	border: 1px solid #C89797
+	border: 1px solid #C89797*/
 }
 .gform_wrapper li.gfield.gfield_creditcard_warning {
 	margin-bottom: 6px !important;
