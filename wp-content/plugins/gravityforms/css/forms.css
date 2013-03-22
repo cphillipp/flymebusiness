@@ -479,6 +479,11 @@ li.gfield + li.gfield.gfield_creditcard_warning {
 .gform_wrapper li.gfield.gfield_error .gfield_description {
 	color: #790000
 }
+
+/* CUSTOM */
+.gform_wrapper li.gfield.gfield_error input {border-color:#790000 !important;}
+.gform_wrapper li.gfield.gfield_error select {border-color:#790000 !important;}
+
 .gform_wrapper .top_label .gfield_error .ginput_container {
 	max-width: 99%
 }
@@ -502,12 +507,12 @@ li.gfield + li.gfield.gfield_creditcard_warning {
 	color: #790000
 }
 .gform_wrapper li.gfield.gfield_error.gfield_contains_required {
-	margin-top: 12px;
-	margin-bottom: 12px !important
+	/*margin-top: 12px;
+	margin-bottom: 12px !important*/
 }
 .gform_wrapper li.gfield.gfield_error.gfield_contains_required label.gfield_label,
 .gform_wrapper li.gfield.gfield_error.gfield_contains_required div.ginput_container  {
-	margin-top: 12px
+	/*margin-top: 12px*/
 }
 .gform_wrapper .validation_error {
 	color: #790000;
